@@ -29,11 +29,23 @@ function identifyBoldWords(list) {
 }
 
 function writeContext(list, url) {
-	var listOfPositions = parseInput("6,1\n8,1\n23,2");
+	var prefixTag = '<b>'
+		suffixTag = '</b>';
+
+	var listOfPositions = parseInput('6,1\n8,2\n23,2');
+// 	console.log(listOfPositions);
 
 	var positionsOfBoldWords = identifyBoldWords(listOfPositions);
 
-	console.log(positionsOfBoldWords);
+	function readTextDocument(tagName) {
+		return document.getElementsByTagName(tagName)[0].innerHTML;
+	}
+
+	var textDocument = readTextDocument('body').replace(/[\n\r]/g, ' ');
+	var wordsInDocument = textDocument.split(' ');
+// 	console.log(wordsInDocument);
+
+	
 }
 
-writeContext("Fill your list", 'test1.html')
+writeContext('Fill your list', 'test1.html')
